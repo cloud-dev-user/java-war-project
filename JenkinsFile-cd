@@ -1,0 +1,16 @@
+pipeline{
+    agent any 
+    stages {
+        stage("download artifact from nexus") {
+           steps { 
+               sh "wget --user=maven-user --password=Abc@123 http://192.168.1.2:8081/repository/maven-snapshots/com/mycompany/app/my-app/2.0-SNAPSHOT/my-app-2.0-20220703.023748-2.war"
+               sh "mv my-app-2.0-20220703.023748-2.war my-app.war  && pwd && ls -ltr "
+           }
+        }
+        stage("copy war file to remote tomcat server") {
+            steps{
+            sh " sshpass -p 'Dev0ps123' scp my-app.war kulkarav@192.168.1.21:/opt/tomcat9/webapps/"
+        }
+        }
+    }
+}
