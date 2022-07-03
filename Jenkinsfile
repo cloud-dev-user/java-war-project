@@ -9,7 +9,7 @@ pipeline {
         }
         stage(" Build code for war file generation") {
             steps {
-                sh 'mvn deploy'
+                sh 'mvn clean  deploy'
             }
         }
         stage(" deploy to tomcat " ) {
