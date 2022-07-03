@@ -12,5 +12,8 @@ pipeline {
                 sh 'mvn deploy'
             }
         }
+        stage(" deploy to tomcat " ) {
+            steps {
+                sh ' sudo cp /tmp/workspace/cicd-war-project/target/my-app.war /opt/tomcat/apache-tomcat-9.0.63/webapps/ '
     }
 }
