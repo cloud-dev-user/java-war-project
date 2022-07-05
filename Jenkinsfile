@@ -3,9 +3,10 @@ pipeline {
     node {
       label 'node_1.3'
     }
-    parameters { string(name: 'tag_name', defaultValue: '', description: ' this is tag given to docker image') }
-    parameters { string(name: 'docker_port', defaultValue: '', description: ' this is tag given to docker image') }
   }
+  parameters { string(name: 'tag_name', defaultValue: '', description: ' this is tag given to docker image') }
+  parameters { string(name: 'docker_port', defaultValue: '', description: ' this is tag given to docker image') }
+  
   stages {
     stage('build code ') {
       steps {
