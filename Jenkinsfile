@@ -22,7 +22,7 @@ pipeline {
 
     stage('deployment using docker image ') {
       steps {
-        sh "sudo docker run -d ${docker_port}:8080 --name sampleapp-${tag_name} ${docker_registry_name}:${tag_name}"
+        sh "sudo docker run -d -p ${docker_port}:8080 --name sampleapp-${tag_name} ${docker_registry_name}:${tag_name}"
       }
     }
 
