@@ -3,10 +3,8 @@ pipeline {
     node {
       label 'node_1.3'
     }
+
   }
-  parameters { string(name: 'tag_name', defaultValue: '', description: ' this is tag given to docker image') 
-               string(name: 'docker_port', defaultValue: '', description: ' this is post give to newly created docker container') }
-  
   stages {
     stage('build code ') {
       steps {
@@ -29,5 +27,9 @@ pipeline {
   }
   environment {
     docker_registry_name = 'vishnu11/sample-app'
+  }
+  parameters {
+    string(name: 'tag_name', defaultValue: '', description: ' this is tag given to docker image')
+    string(name: 'docker_port', defaultValue: '', description: ' this is post give to newly created docker container')
   }
 }
