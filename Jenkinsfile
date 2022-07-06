@@ -3,29 +3,31 @@ pipeline {
     node {
       label 'node_1.3'
     }
-
   }
+  parameters { string(name: 'tag_name', defaultValue: '', description: ' this is tag given to docker image') 
+               string(name: 'docker_port', defaultValue: '', description: ' this is post give to newly created docker container') }
+  
   stages {
     stage('build code ') {
       steps {
-        sh 'mvn package'
+        sh 'mvn clean package &&  cp target/my-app.war .'
       }
     }
 
-    stage('Scan code ') {
+    stage('Create and push Docker image for sample app ') {
       steps {
-        echo 'Code scan is successful '
+        sh " curl -O https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.64/bin/apache-tomcat-9.0.64.tar.gz && sudo docker build -t  ${docker_registry_name}:${tag_name} .  && sudo docker push ${docker_registry_name}:${tag_name}"
       }
     }
 
-    stage('deployment') {
+    stage('deployment using docker image ') {
       steps {
-        echo 'Deployment is successful '
+        sh "sudo docker run -d -p ${docker_port}:8080 --name sampleapp-${tag_name} ${docker_registry_name}:${tag_name}"
       }
     }
 
   }
   environment {
-    java_home = '/opt/jdk'
+    docker_registry_name = 'vishnu11/sample-app'
   }
 }
