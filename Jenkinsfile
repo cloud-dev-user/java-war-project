@@ -11,6 +11,11 @@ pipeline {
         sh 'mvn clean package &&  cp target/my-app.war .'
       }
     }
+    stage('Sonar analysis ') {
+      steps {
+        sh 'mvn sonar:sonar -Dsonar.projectKey=war-project -Dsonar.login=sqa_d64e3d41717107fc2bd3f21c7480a64bd476eafe'
+      }
+    }
 
     stage('Create and push Docker image for sample app ') {
       steps {
@@ -27,6 +32,8 @@ pipeline {
   }
   environment {
     docker_registry_name = 'vishnu11/sample-app'
+    JAVA_HOME='/usr/lib/jvm/java-11-openjdk-11.0.15.0.10-2.el8_6.x86_6'
+    PATH="${JAVA_HOME}/bin:${PATH}"
   }
   parameters {
     string(name: 'tag_name', defaultValue: '', description: ' this is tag given to docker image')
