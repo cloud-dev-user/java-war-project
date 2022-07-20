@@ -32,7 +32,7 @@ pipeline {
   }
   environment {
     docker_registry_name = 'vishnu11/sample-app'
-    JAVA_HOME='/usr/lib/jvm/java-11-openjdk-11.0.15.0.10-2.el8_6.x86_6'
+    JAVA_HOME='/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.292.b10-1.el8_4.x86_64'
     PATH="${JAVA_HOME}/bin:${PATH}"
   }
   parameters {
