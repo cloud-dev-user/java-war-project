@@ -13,13 +13,13 @@ pipeline {
     }
     stage('Sonar analysis ') {
       steps {
-        sh 'mvn sonar:sonar -Dsonar.projectKey=war-project -Dsonar.login=sqa_d64e3d41717107fc2bd3f21c7480a64bd476eafe'
+        sh 'export JAVA_HOME='/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.292.b10-1.el8_4.x86_64' && export PATH="${JAVA_HOME}/bin:${PATH}" && mvn sonar:sonar -Dsonar.projectKey=war-project -Dsonar.login=sqa_d64e3d41717107fc2bd3f21c7480a64bd476eafe'
       }
     }
 
     stage('Create and push Docker image for sample app ') {
       steps {
-        sh " curl -O https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.64/bin/apache-tomcat-9.0.64.tar.gz && sudo docker build -t  ${docker_registry_name}:${tag_name} .  && sudo docker push ${docker_registry_name}:${tag_name}"
+        sh " curl -O https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.64/bin/apache-tomcat-9.0.64.tar.gz &&  sudo docker build -t  ${docker_registry_name}:${tag_name} .  && sudo docker push ${docker_registry_name}:${tag_name}"
       }
     }
 
