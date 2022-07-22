@@ -13,6 +13,11 @@ pipeline {
         sh 'mvn clean package &&  cp target/my-app.war .'
       }
     }
+    stage('performance test for package'{
+      steps {
+        sh 'mvn clean package &&  cp target/my-app.war .'
+      }
+    }
 
     stage('Create and push Docker image for sample app ') {
       steps {
