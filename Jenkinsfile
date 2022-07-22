@@ -1,7 +1,7 @@
 pipeline {
   agent {
     node {
-      label 'node_1.3'
+      label 'node_1.21'
     }
   }
   parameters { string(name: 'tag_name', defaultValue: '', description: ' this is tag given to docker image') 
