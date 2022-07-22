@@ -21,7 +21,7 @@ pipeline {
 
     stage('Create and push Docker image for sample app ') {
       steps {
-        sh " curl -O https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.65/bin/apache-tomcat-9.0.65.tar.gz && mv apache-tomcat-9.0.65.tar.gz /opt/tomcat/  && sudo docker build -t  ${docker_registry_name}:${tag_name} .  && sudo docker push ${docker_registry_name}:${tag_name}"
+        sh " curl -O https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.65/bin/apache-tomcat-9.0.65.tar.gz && sudo docker build -t  ${docker_registry_name}:${tag_name} .  && sudo docker push ${docker_registry_name}:${tag_name}"
       }
     }
 
