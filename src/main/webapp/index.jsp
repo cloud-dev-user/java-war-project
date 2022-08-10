@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 <body>
 <h2>This morning batch 8:30am </h2>
