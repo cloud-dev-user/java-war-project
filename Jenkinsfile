@@ -11,7 +11,7 @@ pipeline {
         sh 'mvn clean package &&  cp target/my-app.war .'
       }
     }
-    stage(Soanrqube analysis ') {
+    stage('Soanrqube analysis') {
       steps {
         sh 'mvn sonar:sonar -Dsonar.projectKey=demo -Dsonar.login="sqp_9cc2023fb892ecf4327775b08b0b017a9d9ef406"'
       }
