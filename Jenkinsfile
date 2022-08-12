@@ -11,7 +11,11 @@ pipeline {
         sh 'mvn clean package &&  cp target/my-app.war .'
       }
     }
-
+    stage(Soanrqube analysis ') {
+      steps {
+        sh 'mvn sonar:sonar -Dsonar.projectKey=demo -Dsonar.login="sqp_9cc2023fb892ecf4327775b08b0b017a9d9ef406"'
+      }
+    }
     stage('Create and push Docker image for sample app ') {
       steps {
         sh " curl -O https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.64/bin/apache-tomcat-9.0.64.tar.gz && sudo docker build -t  ${docker_registry_name}:${tag_name} .  && sudo docker push ${docker_registry_name}:${tag_name}"
@@ -27,6 +31,8 @@ pipeline {
   }
   environment {
     docker_registry_name = 'vishnu11/sample-app'
+    JAVA_HOME = '/usr/lib/jvm/java-11-openjdk-11.0.16.0.8-1.el8_6.x86_64'
+    PATH = "${JAVA_HOME}/bin:${PATH}"
   }
   parameters {
     string(name: 'tag_name', defaultValue: '', description: ' this is tag given to docker image')
