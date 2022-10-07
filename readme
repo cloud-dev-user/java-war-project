@@ -2,6 +2,3 @@ this is readme file
 set of instruction to run this webapp 
 mvn clean install 
 this is new change 
-
-this is second change
-
