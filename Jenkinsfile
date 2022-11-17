@@ -1,7 +1,7 @@
 pipeline {
   agent {
     node {
-      label 'node_1.4'
+      label 'agent-109'
     }
 
   }
@@ -9,11 +9,6 @@ pipeline {
     stage('build code ') {
       steps {
         sh 'mvn clean package &&  cp target/my-app.war .'
-      }
-    }
-    stage('Sonar analysis ') {
-      steps {
-        sh "export JAVA_HOME='/usr/lib/jvm/java-11-openjdk-11.0.15.0.10-2.el8_6.x86_64' && export PATH=$JAVA_HOME/bin:$PATH && mvn sonar:sonar -Dsonar.projectKey=war-project -Dsonar.login=sqa_d64e3d41717107fc2bd3f21c7480a64bd476eafe"
       }
     }
 
@@ -32,7 +27,6 @@ pipeline {
   }
   environment {
     docker_registry_name = 'vishnu11/sample-app'
-   
   }
   parameters {
     string(name: 'tag_name', defaultValue: '', description: ' this is tag given to docker image')
