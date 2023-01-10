@@ -71,12 +71,9 @@
   </build>
   <distributionManagement>
     <snapshotRepository>
-      <id>nexus-snapshots</id>
-      <url>http://192.168.1.2:8081/repository/maven-snapshots/</url>
+        <id>snapshots</id>
+        <name>devops-libs-snapshot</name>
+        <url>https://devopsravi.jfrog.io/artifactory/devops-libs-snapshot</url>
     </snapshotRepository>
-    <repository>
-      <id>nexus-releases</id>
-      <url>http://192.168.1.2:8081/repository/maven-releases/</url>
-    </repository>
-  </distributionManagement>
+</distributionManagement>
 </project>
