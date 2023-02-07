@@ -2,9 +2,9 @@ FROM openjdk
 
 RUN mkdir /opt/tomcat
 WORKDIR /opt/tomcat
-RUN curl -O https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.69/bin/apache-tomcat-9.0.69.tar.gz
-RUN tar xvf apache-tomcat-9.0.69.tar.gz
-RUN cp -r apache-tomcat-9.0.69/*  /opt/tomcat/.
+RUN curl -O https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.71/bin/apache-tomcat-9.0.71.tar.gz
+RUN tar xvf apache-tomcat-9.0.71.tar.gz
+RUN cp -r apache-tomcat-9.0.71/*  /opt/tomcat/.
 COPY my-app.war /opt/tomcat/webapps/
 
 EXPOSE 8080
