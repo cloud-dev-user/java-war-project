@@ -70,13 +70,15 @@
     </pluginManagement>
   </build>
   <distributionManagement>
-    <snapshotRepository>
-      <id>nexus-snapshots</id>
-      <url>http://192.168.1.2:8081/repository/maven-snapshots/</url>
-    </snapshotRepository>
     <repository>
-      <id>nexus-releases</id>
-      <url>http://192.168.1.2:8081/repository/maven-releases/</url>
+        <id>release</id>
+        <name>devops-release</name>
+        <url>https://devops400.jfrog.io/artifactory/devops</url>
     </repository>
-  </distributionManagement>
+    <snapshotRepository>
+        <id>snapshots</id>
+        <name>devops-snapshots</name>
+        <url>https://devops400.jfrog.io/artifactory/devops</url>
+    </snapshotRepository>
+</distributionManagement> 
 </project>
