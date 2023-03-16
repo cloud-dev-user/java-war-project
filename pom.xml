@@ -5,8 +5,8 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.mycompany.app</groupId>
-  <artifactId>my-app</artifactId>
-  <version>2.0-SNAPSHOT</version>
+  <artifactId>my-app-ravi</artifactId>
+  <version>2.0</version>
   <packaging>war</packaging>
 
   <name>my-app Maven Webapp</name>
@@ -64,14 +64,16 @@
       </plugins>
     </pluginManagement>
   </build>
-  <distributionManagement>
-    <snapshotRepository>
-      <id>nexus-snapshots</id>
-      <url>http://192.168.1.2:8081/repository/maven-snapshots/</url>
-    </snapshotRepository>
+  distributionManagement>
     <repository>
-      <id>nexus-releases</id>
-      <url>http://192.168.1.2:8081/repository/maven-releases/</url>
+        <id>release</id>
+        <name>devops-release</name>
+        <url>https://devops400.jfrog.io/artifactory/devops</url>
     </repository>
-  </distributionManagement>
+    <snapshotRepository>
+        <id>snapshots</id>
+        <name>devops-snapshots</name>
+        <url>https://devops400.jfrog.io/artifactory/devops</url>
+    </snapshotRepository>
+</distributionManagement> 
 </project>
