@@ -1,5 +1,5 @@
 pipeline {
-  }
+  
   parameters { string(name: 'jfrog_name', defaultValue: '', description: ' this is user name for jfrog') 
                string(name: 'jfrog_pass', defaultValue: '', description: ' this is password for jfrog') }
   
@@ -22,5 +22,5 @@ pipeline {
           """
       }
     }
-
+  }
   }
