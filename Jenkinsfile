@@ -1,38 +1,28 @@
 pipeline {
-  agent {
-    node {
-      label 'node_1.21'
-    }
   }
-  parameters { string(name: 'tag_name', defaultValue: '', description: ' this is tag given to docker image') 
-               string(name: 'docker_port', defaultValue: '', description: ' this is post give to newly created docker container') }
+  parameters { string(name: 'jfrog_name', defaultValue: '', description: ' this is user name for jfrog') 
+               string(name: 'jfrog_pass', defaultValue: '', description: ' this is password for jfrog') }
   
   stages {
-    stage('build code ') {
+    
+    stage('build code and push code to artifact repo ') {
+      agent node { label 'devops' }
       steps {
-        sh 'mvn clean package &&  cp target/my-app.war .'
+        sh 'mvn clean deploy'
       }
     }
-    stage('performance test for package'){
+    
+    stage('deployment on tomcat') {
+      agent node { label 'tomcat-deploy' }
       steps {
-        sh 'mvn clean package &&  cp target/my-app.war .'
-      }
-    }
-
-    stage('Create and push Docker image for sample app ') {
-      steps {
-        sh " curl -O https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.65/bin/apache-tomcat-9.0.65.tar.gz && sudo docker build -t  ${docker_registry_name}:${tag_name} .  && sudo docker push ${docker_registry_name}:${tag_name}"
-      }
-    }
-
-    stage('deployment using docker image ') {
-      steps {
-        sh "sudo docker run -d -p ${docker_port}:8080 --name sampleapp-${tag_name} ${docker_registry_name}:${tag_name}"
+        sh """
+             wget --http-user=${jfrog_user}  --http-password=${jfrog_pass} https://devops400.jfrog.io/artifactory/devops/com/mycompany/app/my-app-ravi/2.0/my-app-ravi-2.0.war
+             mv my-app-ravi-2.0.war my-app-ravi.war
+             cp my-app-ravi.war /home/rocky/tomcat/tomcat9/webapps/
+          """
       }
     }
 
   }
-  environment {
-    docker_registry_name = 'vishnu11/sample-app'
-  }
+ 
 }
