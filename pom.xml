@@ -64,7 +64,7 @@
       </plugins>
     </pluginManagement>
   </build>
-  distributionManagement>
+  <distributionManagement>
     <repository>
         <id>release</id>
         <name>devops-release</name>
