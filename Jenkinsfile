@@ -1,6 +1,6 @@
 pipeline {
   agent none
-  parameters { string(name: 'jfrog_name', defaultValue: '', description: ' this is user name for jfrog') 
+  parameters { string(name: 'jfrog_user', defaultValue: '', description: ' this is user name for jfrog') 
                string(name: 'jfrog_pass', defaultValue: '', description: ' this is password for jfrog') }
   environment {
                 MVN_HOME = "/home/rocky/maven3.9"
