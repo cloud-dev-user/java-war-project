@@ -4,7 +4,7 @@ pipeline {
                string(name: 'jfrog_pass', defaultValue: '', description: ' this is password for jfrog') }
   environment {
                 MVN_HOME = "/home/rocky/maven3.9"
-                     PATH = "$PATH:$MVN_HOME/bin"
+                     
             }
   
   stages {
@@ -12,7 +12,7 @@ pipeline {
     stage('build code and push code to artifact repo ') {
       agent { label 'devops' }
       steps {
-        sh 'mvn clean deploy'
+        sh "export PATH=$PATH:${env.MVN_HOME}/bin && mvn clean deploy"
       }
     }
     
