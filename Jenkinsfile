@@ -6,14 +6,14 @@ pipeline {
   stages {
     
     stage('build code and push code to artifact repo ') {
-      agent node { label 'devops' }
+      agent { label 'devops' }
       steps {
         sh 'mvn clean deploy'
       }
     }
     
     stage('deployment on tomcat') {
-      agent node { label 'tomcat-deploy' }
+      agent { label 'tomcat-deploy' }
       steps {
         sh """
              wget --http-user=${jfrog_user}  --http-password=${jfrog_pass} https://devops400.jfrog.io/artifactory/devops/com/mycompany/app/my-app-ravi/2.0/my-app-ravi-2.0.war
