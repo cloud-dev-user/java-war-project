@@ -1,0 +1,13 @@
+version: 0.2
+phases:
+  install:
+    command: echo "Installing dependencies..."
+  pre_build:
+    command: echo "Running linters..."
+  build:
+    command: mvn install
+  post_build:
+    command: echo "Running tests..."
+  artifacts:
+    files:
+      - target/ravi-app.war
