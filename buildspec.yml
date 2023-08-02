@@ -8,6 +8,4 @@ phases:
     command: mvn install
   post_build:
     command: echo "Running tests..."
-  artifacts:
-    files:
-      - target/ravi-app.war
+
