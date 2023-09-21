@@ -20,6 +20,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Execute Custom Action
+      uses: cloud-dev-user/github_action_demo@v1
+      with:
+          message: "This is a custom message"
     - uses: actions/checkout@v3
     - name: Set up JDK 17
       uses: actions/setup-java@v3
