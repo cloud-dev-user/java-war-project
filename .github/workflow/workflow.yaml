@@ -30,4 +30,13 @@ jobs:
     - name: Build with Maven
       run: mvn -B package --file pom.xml
 
+  build-docker-image:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+
    
