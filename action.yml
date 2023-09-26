@@ -1,0 +1,13 @@
+name: print message
+description: prints a message
+inputs:
+  message:
+    description: message to print
+    required:true
+
+outputs:
+none:
+description: dont produce any outputs
+runs:
+useing: "node16"
+main:"index.js"
