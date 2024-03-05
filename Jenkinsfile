@@ -1,11 +1,7 @@
 pipeline {
-  agent {
-    node {
-      label 'node_1.4'
-    }
+       agent any
 
-  }
-  stages {
+   stages {
     stage('build code ') {
       steps {
         sh 'mvn clean package &&  cp target/my-app.war .'
