@@ -1,0 +1,172 @@
+You are a Senior Performance Engineer and Full-Stack Architect.
+
+Design and implement a production-grade Performance Testing Platform built around Apache JMeter.
+
+The system should be modular, scalable, cloud-ready, and enterprise-grade.
+
+-----------------------------------
+🎯 OBJECTIVE
+-----------------------------------
+Build a web-based application that allows users to:
+- Create, manage, and execute performance tests using JMeter
+- Monitor real-time metrics
+- Analyze historical performance trends
+- Integrate with CI/CD pipelines
+- Run distributed load tests
+
+-----------------------------------
+🏗️ ARCHITECTURE
+-----------------------------------
+Use a microservices-based architecture:
+
+Frontend:
+- React (with TypeScript)
+- Dashboard with real-time charts (use WebSockets)
+
+Backend:
+- Node.js (Express) OR Python (FastAPI)
+- REST + WebSocket APIs
+
+Execution Engine:
+- Apache JMeter (CLI mode)
+- Wrapper service to trigger and manage JMeter test plans (.jmx)
+
+Database:
+- PostgreSQL (test configs, results metadata)
+- Redis (real-time metrics streaming / caching)
+
+Storage:
+- S3-compatible storage (for logs, reports)
+
+-----------------------------------
+⚙️ CORE FEATURES
+-----------------------------------
+
+1. Test Plan Management
+- Upload, edit, version control JMeter .jmx files
+- Parameterization support (CSV, env variables)
+- Template library for common scenarios (API, UI, DB)
+
+2. Test Execution
+- Run tests on-demand or scheduled
+- Support local + distributed execution
+- Configure:
+  - Threads (users)
+  - Ramp-up
+  - Duration
+  - Loop count
+
+3. Distributed Load Testing
+- Master-slave JMeter architecture
+- Auto-scale load generators using Docker/Kubernetes
+- Ability to add/remove nodes dynamically
+
+4. Real-time Monitoring
+- Live metrics:
+  - Throughput
+  - Response time (avg, p95, p99)
+  - Error rate
+- WebSocket streaming
+- Grafana-compatible metrics
+
+5. Reporting & Analysis
+- Generate HTML reports from JMeter
+- Trend analysis across multiple runs
+- SLA validation (pass/fail rules)
+- Comparison between builds
+
+6. CI/CD Integration
+- Provide REST API + CLI tool
+- Jenkins/GitHub Actions integration
+- Fail pipeline if SLA breaches
+
+7. Alerting & Notifications
+- Email / Slack alerts
+- Trigger alerts on:
+  - High error rate
+  - SLA breach
+  - Test completion
+
+8. User Management & RBAC
+- Roles: Admin, Tester, Viewer
+- Authentication (JWT / OAuth)
+
+9. Logs & Debugging
+- Centralized logs (ELK stack optional)
+- Ability to download JMeter logs
+- Failure root cause insights
+
+10. Test Data Management
+- CSV data upload
+- Dynamic data generation
+- Secrets management (API keys, tokens)
+
+-----------------------------------
+📊 ADVANCED FEATURES
+-----------------------------------
+
+- AI-based anomaly detection on performance trends
+- Auto test recommendation based on traffic patterns
+- Cost estimation for distributed runs
+- Chaos testing integration (latency injection)
+- Service virtualization (mock dependencies)
+
+-----------------------------------
+📦 DEVOPS & DEPLOYMENT
+-----------------------------------
+
+- Dockerize all services
+- Kubernetes deployment (Helm charts)
+- Horizontal scaling for execution nodes
+- CI/CD pipeline setup
+- Environment configs (dev/stage/prod)
+
+-----------------------------------
+🔐 NON-FUNCTIONAL REQUIREMENTS
+-----------------------------------
+
+- High scalability (handle 100K+ virtual users)
+- Fault tolerance (retry, failover)
+- Secure (RBAC, encrypted secrets)
+- Observability (logs, metrics, tracing)
+
+-----------------------------------
+📁 DELIVERABLES
+-----------------------------------
+
+- Full project structure
+- Backend APIs implementation
+- Frontend dashboard
+- JMeter execution service
+- Sample .jmx test plan
+- Docker Compose setup
+- Kubernetes manifests
+- CI/CD pipeline config
+- README with setup instructions
+
+-----------------------------------
+💡 CODING GUIDELINES
+-----------------------------------
+
+- Clean, modular code
+- Use design patterns (Factory, Strategy for execution)
+- Proper error handling
+- Logging & monitoring hooks
+- API documentation (Swagger/OpenAPI)
+
+-----------------------------------
+🚀 BONUS
+-----------------------------------
+
+- Provide a minimal working MVP first, then scale to full version
+- Include sample performance test scenario (login API load test)
+- Add dashboards with charts (response time, TPS, errors)
+
+-----------------------------------
+
+Now start by:
+1. Creating the high-level architecture diagram (text-based)
+2. Generating backend service structure
+3. Implementing JMeter execution wrapper
+4. Building a simple UI dashboard
+5. Adding real-time metrics streaming
